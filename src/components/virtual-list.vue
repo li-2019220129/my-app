@@ -49,7 +49,6 @@ const cacheList = ref<Array<any>>();
 onMounted(() => {
   boxRef.value!.style.height = `${props.size * props.remain}px`;
   scrollRef.value!.style.height = `${props.data.length * props.size}px`;
-
   cacheList.value = props.data.map((item, index) => {
     return {
       height: props.size,
@@ -95,7 +94,6 @@ const findStart = (val: number) => {
 };
 onUpdated(() => {
   nextTick(() => {
-    debugger;
     const node = itemRef.value;
     if (!node || !node.length) return;
     node.forEach((item, index) => {
