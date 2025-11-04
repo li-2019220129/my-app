@@ -2,9 +2,10 @@ import { ElTable, ElTableColumn } from "element-plus";
 import { defineComponent } from "vue";
 export default defineComponent({
   props: { data: Array, col: Array },
-  setup(props: any) {
+  emits: ['onHeaderDragend'],
+  setup(props: any, { emit }) {
     return () => (
-      <ElTable data={props.data} style="width: 100%">
+      <ElTable border data={props.data} style="width: 100%" onHeaderDragend={() => emit("onHeaderDragend")} >
         {props.col.map((column: any) => (
           <ElTableColumn
             key={column.property}

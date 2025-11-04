@@ -7,7 +7,11 @@ import { reactive, ref, onMounted, watch, nextTick } from "vue";
 import TableComponent from "./components/table-component.tsx";
 
 const poperMap = ref({});
+
+
+
 const checkMap = async () => {
+  await nextTick();
   const domArr = document.querySelectorAll(".cell-box");
   domArr.forEach((el: any) => {
     const id = el.getAttribute("data-value");
@@ -19,7 +23,6 @@ const tableData = ref<any[]>([]);
 watch(
   () => tableData.value,
   async () => {
-    await nextTick();
     checkMap();
   },
   { deep: true }
